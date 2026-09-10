@@ -3,8 +3,7 @@
 Homebrew tap for [Nuqayah](https://nuqayah.com/) apps.
 
 ```sh
-brew tap nuqayah/tap
-brew install --cask turath
+brew install --cask nuqayah/tap/turath
 ```
 
-Updates are checked daily and proposed as pull requests.
+Updates are checked daily and committed automatically.
