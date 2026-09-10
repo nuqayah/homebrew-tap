@@ -36,14 +36,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          while IFS=$'\t' read -r cask version; do
-            brew bump-cask-pr --write-only --version="$version" "$cask"
-          done < <(
+          bumps=$(
             brew livecheck --quiet --casks --json --tap="$TAP_NAME" |
               jq -r '.[] | select(.version.outdated) | [.cask, .version.latest] | @tsv'
           )
+          while IFS=$'\t' read -r cask version; do
+            [[ -z "$cask" ]] || brew bump-cask-pr --write-only --version="$version" "$cask"
+          done <<< "$bumps"
 
           git diff --quiet && exit 0
           git add Casks
           git commit -m "casks: update to latest versions"
-          git push
+          git push origin HEAD:main
