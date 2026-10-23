@@ -1,6 +1,6 @@
 cask "turath" do
-  version "9.0.84"
-  sha256 "ac6b8e3b910daffb06749d19aa855cb57963f5f1835283ae511119c14fafde47"
+  version "9.0.88"
+  sha256 "8bc704076302fd269b780cc234f3e44fa6c5d020a42164a810bb9e801abe2695"
 
   url "https://app.turath.io/desktop-updates/turath-#{version}-universal.dmg"
   name "Turath"
